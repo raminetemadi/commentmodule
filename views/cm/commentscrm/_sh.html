@@ -1,0 +1,101 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal"><span class="fa fa-times"></span> </button>
+            <h4 class="modal-title">{{labels.h1}}</h4>
+        </div>
+
+        <div class="modal-body form-horizontal">
+            <div class="form-group">
+                <label class="label-control col-md-3 pull-right">{{labels.control.username}}</label>
+                <div class="col-md-9">
+                    {% set user = getUserAccountWithAvatar(comment.username) %}
+                    {{ user.fname ~ ' ' ~ user.lname }}
+                </div>
+            </div>
+
+            <!-- time -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.time}}</label>
+                <div class="col-md-9 pull-right">
+                    {% set time = comment.ts|split(' ') %}
+                    {% set _date = time[0]|split('-') %}
+                    {% set y = _date[2] %}
+                    {% set m = _date[1] %}
+                    {% set d = _date[0] %}
+
+                    {{ changeDate(y ~ '/' ~ m ~ '/' ~ d) }} - {{time[1]}}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.path}}</label>
+                <div class="col-md-9 pull-right">
+                    {% set path = comment.path %}
+                    {% if path.storeID %}
+                        {% set sTitle = storeTitle(path.storeID) %}
+                        <a href="/stores/{{path.storeID}}">{{sTitle}}</a>
+                    {% endif %}
+                    {% if path.pCode %}
+                        {% set index = arraySearchProductItems(mp._input, 'key-name', 'title') %} &raquo;
+                        <a href="/products/{{path.storeID}}/{{path.pCode}}">{{mp._input[index].value}}</a>
+                    {% endif %}
+                    {% if path.pId %}
+                        {% set index = arraySearchProductItems(p._input, 'key-name', 'title') %} &raquo;
+                        <a href="/refproduct/{{path.pId}}">{{p._input[index].value}}</a>
+                    {% endif %}
+                </div>
+            </div>
+            <!-- point-items -->
+            {% for g in group %}
+                {% set items = g.item %}
+                {% for item in items %}
+                    {% set item = item['@attributes'] %}
+                    <div class="form-group">
+                        <label class="col-md-3 pull-right">{{item.title}}:</label>
+                        <div class="col-md-9 pull-right">{{comment.pointItems[item.name]}}</div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            <!-- title -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.title}}</label>
+                <div class="col-md-9 pull-right">{{comment.title}}</div>
+            </div>
+
+            <!-- shortcoming -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.shortcoming}}</label>
+                <div class="col-md-9 pull-right">{{comment.shortcoming}}</div>
+            </div>
+
+            <!-- strengths -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.strengths}}</label>
+                <div class="col-md-9 pull-right">{{comment.strengths}}</div>
+            </div>
+
+            <!-- msg -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right">{{labels.control.msg}}</label>
+                <div class="col-md-9 pull-right">{{comment.msg}}</div>
+            </div>
+
+            <!--  images -->
+            <div class="form-group">
+                <label class="col-md-3 pull-right"></label>
+                <div class="col-md-9 pull-right">
+                    {% set server = getUserAccountServer(user.username) %}
+                    {% for img in comment.images if img %}
+                        <img src="{{crLink(img, server)}}" style="max-height: 100%; max-width: 100%;">
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn btn-default pull-left" data-dismiss="modal">{{labels.buttons.close}}</button>
+        </div>
+    </div>
+</div>

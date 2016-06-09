@@ -1,0 +1,31 @@
+{% if items %}
+    <table class="table table-bordered table-hover table-fix-layout">
+        <thead>
+        <tr>
+            <th class="col-md-1 text-center">{{labels.table.id}}</th>
+            <th class="col-md-5 text-center">{{labels.table.title}}</th>
+            <th class="col-md-2 text-center">{{labels.table.default}}</th>
+            <th class="col-md-1 text-center">{{labels.table.id}}</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for k,item in items %}
+                {% set item = item['@attributes'] %}
+                <tr class="text-center">
+                    <td>{{k+1}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.default}}</td>
+                    <td>
+                        <a href="javascript:rmPointItem('{{item.name}}')">
+                            <span class="fa fa-times"></span>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <div class="form-group text-center">
+        <span class="help-block">{{labels.gbasic.notification.alert.notfound}}</span>
+    </div>
+{% endif %}

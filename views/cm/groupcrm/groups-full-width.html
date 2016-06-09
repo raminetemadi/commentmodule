@@ -1,0 +1,38 @@
+<div class="page-title pull-right">
+    <h2 class="pull-right"><span class="fa fa-arrow-circle-o-right"></span> {{labels.h1}}</h2>
+</div>
+
+<div id="groups-div"></div>
+
+<script>
+    $(document).ready(function () {
+        refreshGroups();
+    });
+
+    function refreshGroups(){
+        post('/comment/cm/groupcrm/gall',{}, function (data) {
+            writeInDiv('groups-div', data)
+        })
+    }
+
+    function rmGroup(gName){
+        messageBox(MB_WARNING_YES_NO, '{{labels.messages.confirm.delete.title}}', '{{labels.messages.confirm.delete.msg}}',
+                {
+                    yes: '{{labels.buttons.yes}}',
+                    no: '{{labels.buttons.no}}'
+                }, function (e) {
+                    if( e ){
+                        post('/comment/cm/groupcrm/rm-g', {gName: gName}, function (data) {
+                            if( data == '' ){
+                                notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                                refreshGroups()
+                            }else notyAlert(data, 'error');
+                        });
+                    }
+                });
+    }
+
+    function groupItem(gName){
+        createModal('/comment/cm/pointitem/g', {gName: gName}, 'point-form', true);
+    }
+</script>

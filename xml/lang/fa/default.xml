@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels dir="rtl" align="right" lang="fa">
+    <!-- All labels in mail Controller -->
+    <cm>
+
+        <!-- START Basic Items -->
+        <basic>
+            <!-- MainMenu Title -->
+            <mainmenutitle>منوی اصلی</mainmenutitle>
+
+            <!-- START BUTTONS -->
+            <buttons>
+                <login>ورود</login>
+                <submit>ثبت</submit>
+                <register>ثبت نام</register>
+                <reset>بازنشانی</reset>
+                <back>بازگشت</back>
+                <apply>اجرا کردن</apply>
+                <send>ارسال</send>
+                <img>تصویر...</img>
+                <cancel>لغو</cancel>
+                <new>جدید</new>
+                <delete>حذف</delete>
+                <edit>ویرایش</edit>
+                <yes>بله</yes>
+                <no>خیر</no>
+                <change>ذخیره تغییرات</change>
+                <ok>قبول</ok>
+                <active>فعال سازی</active>
+                <deactivate>غیرفعال سازی</deactivate>
+                <leave>خروج از صفحه</leave>
+                <stay>ماندن در این صفحه</stay>
+                <close>بستن</close>
+            </buttons>
+            <!-- END BUTTONS -->
+
+            <!-- START GROUPS ITEMS -->
+            <groups>
+                <gender>
+                    <female>مونث</female>
+                    <male>مذکر</male>
+                    <!--<unknown>دیگر</unknown>-->
+                </gender>
+                <month>
+                    <shamsi>
+                        <m1>فروردین</m1>
+                        <m2>اردیبهشت</m2>
+                        <m3>خرداد</m3>
+                        <m4>تیر</m4>
+                        <m5>مرداد</m5>
+                        <m6>شهریور</m6>
+                        <m7>مهر</m7>
+                        <m8>آبان</m8>
+                        <m9>آذر</m9>
+                        <m10>دی</m10>
+                        <m11>بهمن</m11>
+                        <m12>اسفند</m12>
+                    </shamsi>
+                </month>
+                <date>
+                    <d>روز</d>
+                    <m>ماه</m>
+                    <y>سال</y>
+                </date>
+            </groups>
+            <!-- END GROUPS ITEMS -->
+
+            <!-- START Messages -->
+            <messages>
+                <!-- START VALIDATE -->
+                <validate>
+                    <username>نام کاربری که وارد کرده اید نامعتبر می باشد.[br]نام کاربری میتواند تنها حروف انگلیسی و اعداد و "_" باشد.</username>
+                    <password>کلمه عبور نمی تواند کمتر از 5 حرف باشد.</password>
+                    <confirm>کلمه عبور وارد شده یکسان نمی باشد.</confirm>
+                    <fname>نام خود را وارد نمایید.</fname>
+                    <lname>نام خانوادگی خود را وارد نمایید.</lname>
+                    <email>ایمیل وارد شده معتبر نمی باشد.</email>
+                    <terms_of_service>شما قوانین سایت را قبول نکرده اید.</terms_of_service>
+                    <incorrectnumber>عدد وارد شده صحیح نمی باشد.</incorrectnumber>
+                    <name>نام وارد شده نامعتبر می باشد.[br]تنها میتوانید از حروف انگلیسی و _ انتخاب نمایید.</name>
+                    <store>نام فروشگاهی که انتخاب نموده اید نامعتبر می باشد.[br]نام فروشگاه تنها میتواند حروف انگلیسی و _ باشد.</store>
+                    <notEmpty>فیلدهای خالی را تکمیل نمایید.</notEmpty>
+                </validate>
+                <!-- END VALIDATE -->
+
+                <!-- START ALERT -->
+                <alert>
+                    <success>عملیات با موفقیت انجام شد.</success>
+                    <success_confirm>اطلاعات شما با موفقیت ثبت گردید و در انتظار تایید از طرف مدیریت می باشد.</success_confirm>
+                    <notfound>هیچ آیتمی یافت نشد.</notfound>
+                    <expire_store>هشدار! کاربر گرامی، فروشگاه شما به علت عدم تمدید پکیج خود غیرفعال گردیده است.لطفاً برای فعال سازی فروشگاه پکیج خود را تمدید نمایید.</expire_store>
+                    <expire_store_info>زمان تمدید فروشگاه شما مورخ %s می باشد.لطفاً قبل از اتمام تاریخ انقضاء پکیج اقدام به تمدید مجدد نمایید.</expire_store_info>
+                    <expire_store_by_crm>اعتبار فروشگاه شما توسط مدیریت به مدت %day روز افزایش یافته است.اعتبار فروشگاه تا تاریخ %date می باشد.</expire_store_by_crm>
+                    <expire_store_by_pkLimited>پکیج شما دارای محدودیت در تعداد فروشگاه می باشد.برای فعال سازی این فروشگاه لطفاً پکیج خود را ارتقاء دهید.</expire_store_by_pkLimited>
+                    <limited_price>پکیج شما دارای محدودیت در تعیین قیمت می باشد.برای تعیین قیمت محصولات و یا خدمات خود نیاز به ارتقاء پکیج دارید.</limited_price>
+                    <allow_logo>با عرض پوزش، پکیج شما امکان تغییر و یا انتخاب لوگو برای فروشگاه را ندارد.برای اینکار پکیج خود را ارتقاء دهید.</allow_logo>
+                    <allow_cover>با عرض پوزش، پکیج شما امکان تغییر و یا انتخاب کاور برای فروشگاه را ندارد.برای اینکار پکیج خود را ارتقاء دهید.</allow_cover>
+                    <leave_page_store>
+                        <title>هشدار!</title>
+                        <msg>شما در حال ایجاد یک فروشگاه جدید هستید.با خروج از این صفحه و قطع عملیات فروشگاه شما به صورت اتوماتیک حذف خواهد شد و اطلاعات وارد شده از دست خواهد رفت.آیا از این عمل مطمئن هستید؟</msg>
+                    </leave_page_store>
+                    <geo_not_selected>موقعیت جغرافیایی تعیین نشده است.</geo_not_selected>
+                </alert>
+                <!-- END ALERT -->
+
+                <!-- Confirm -->
+                <confirm>
+                    <delete>
+                        <title>هشدار!</title>
+                        <msg>آیا از حذف این آیتم مطمئن هستید؟</msg>
+                    </delete>
+
+                    <gdelete>
+                        <title>هشدار!</title>
+                        <msg>آیا از حذف گروه "%s" مطمئن هستید؟[br]فروشگاه هایی که این گروه را انتخاب نموده اند امکان دارد دچار مشکل شوند.</msg>
+                    </gdelete>
+
+                    <store_delete>
+                        <title>هشدار مهم!</title>
+                        <msg>شما در حال حذف فروشگاه "%s" هستید.[br]با کلیک بر روی "بله" تمام اطلاعات فروشگاه نظیر "محصولات سفارشی شده"، اطلاعات تکمیلی و ... حذف خواهند شد و امکان بازیابی نخواهید داشت.[br]آیا از حذف این فروشگاه مطمئن هستید؟</msg>
+                    </store_delete>
+
+                    <store_delete_error>
+                        <title>خطا!</title>
+                        <msg>این فروشگاه دچار مشکل شده است و یا در حین ایجاد آن خطایی رخ داده است.[br]یک بار دیگر صفحه را رفرش نمایید.اگر این مشکل وجود داشت این فروشگاه را حذف نمایید.[br]آیا از حذف این فروشگاه مطمئن هستید؟</msg>
+                    </store_delete_error>
+
+                    <empty_parts>
+                        <title>هشدار!</title>
+                        <msg>بخشی برای فروشگاه انتخاب نشده است.آیا از ادامه ثبت فروشگاه مطمئن هستید؟</msg>
+                    </empty_parts>
+
+                    <username_error>
+                        <title>خطا!</title>
+                        <msg>نام کاربری انتخاب شده نامعتبر می باشد و یا این کاربر وجود ندارد.</msg>
+                    </username_error>
+
+                    <store_error>
+                        <title>خطا!</title>
+                        <msg>نام فروشگاه انتخاب شده از قبل موجود می باشد.</msg>
+                    </store_error>
+
+                    <rollback_expire>
+                        <title>هشدار!</title>
+                        <msg>آیا قصد دارید تعیین اعتبار فروشگاه از طریق پکیج مدیریت انجام گردد؟</msg>
+                    </rollback_expire>
+
+                    <delete_comment>
+                        <title>هشدار!</title>
+                        <msg>با حذف این دیدگاه، تمامی اطلاعات این دیدگاه (تصاویر آپلود شده، امتیازهای داده شده و ...) حذف خواهد شد.آیا مطمئن هستید؟</msg>
+                    </delete_comment>
+                </confirm>
+                <!-- END Confirm -->
+            </messages>
+            <!-- END Messages -->
+
+        </basic>
+        <!-- END Basic Items -->
+
+        <!-- START MainMenu Labels-->
+        <menu>
+        </menu>
+        <!-- END MainMenu Labels -->
+
+        <index></index>
+
+        <!-- groupcrm action -->
+        <groupcrm>
+            <h1>گروه بندی دیدگاه ها - آیتم های امتیازی</h1>
+
+            <!-- gall op -->
+            <gall>
+                <h1>گروه ها</h1>
+                <new_btn>گروه جدید</new_btn>
+                <table>
+                    <id>#</id>
+                    <des>عنوان دسته</des>
+                    <assigned>اختصاص یافته به</assigned>
+                    <type>نوع دسته</type>
+                    <tools>#</tools>
+                </table>
+                <types>
+                    <t100>از نوع فروشگاه</t100>
+                    <t101>از نوع محصول</t101>
+                </types>
+            </gall>
+            <!-- end gall op -->
+
+            <!-- cr-g-f op -->
+            <cr-g-f>
+                <h1>گروه جدید</h1>
+                <control>
+                    <type>نوع گروه:</type>
+                    <name>نام:</name>
+                    <des>عنوان:</des>
+                    <assigned>اختصاص به:</assigned>
+                    <types>
+                        <store>از نوع فروشگاه</store>
+                        <product>از نوع محصول</product>
+                    </types>
+
+                    <pl>
+                        <name>میتواند خالی باشد</name>
+                        <des>عنوان گروه را وارد نمایید.</des>
+                    </pl>
+                </control>
+            </cr-g-f>
+            <!-- end cr-g-f op -->
+        </groupcrm>
+        <!-- end groupcrm action -->
+
+        <!-- pointitem action -->
+        <pointitem>
+
+            <!-- g op -->
+            <g>
+                <h1>آیتم های امتیازی گروه %s%</h1>
+                <table>
+                    <id>#</id>
+                    <title>عنوان آیتم</title>
+                    <default>مقدار پیش فرض آیتم</default>
+                </table>
+            </g>
+            <!-- end g op -->
+
+            <!-- ref-g -->
+            <ref-g>
+                <table>
+                    <id>#</id>
+                    <title>عنوان آیتم</title>
+                    <default>مقدار پیش فرض آیتم</default>
+                </table>
+            </ref-g>
+            <!-- end ref-g op -->
+
+            <!-- cr-f op -->
+            <cr-f>
+                <h1>آیتم امتیازی جدید</h1>
+                <control>
+                    <title>عنوان آیتم:</title>
+                    <name>نام آیتم:</name>
+                    <default>مقدار پیش فرض:</default>
+                    <pl>
+                        <title>عنوانی برای آیتم امتیازی انتخاب نمایید.</title>
+                        <name>نام آیتم می تواند خالی باشد.</name>
+                    </pl>
+                    <hlp>
+                        <default>مقدار پیش فرض آیتم را مشخص نمایید.</default>
+                    </hlp>
+                </control>
+            </cr-f>
+            <!-- end cr-f op -->
+        </pointitem>
+        <!-- end pointitem action -->
+
+        <!-- commentscrm action -->
+        <commentscrm>
+            <h1>دیدگاه های ثبت شده</h1>
+            <control>
+                <delete>حذف این دیدگاه</delete>
+                <per>تعداد نمایش:</per>
+                <go>برو به صفحه ای که دیدگاه قرار دارد.</go>
+                <changeState>تغییر وضعیت نمایش این دیدگاه</changeState>
+                <show>نمایش دیدگاه</show>
+                <panel>
+                    <h1>لیست دیدگاه ها</h1>
+                    <tb>
+                        <id>#</id>
+                        <username>نام کاربری</username>
+                        <title>عنوان دیدگاه</title>
+                        <date>تاریخ نشر</date>
+                        <published>وضعیت دیدگاه</published>
+                        <tools>#</tools>
+                    </tb>
+                </panel>
+            </control>
+
+            <!-- ch-state op -->
+            <ch-state>
+                <h1>تغییر در وضعیت دیدگاه</h1>
+                <cm1>میتوانید وضعیت دیدگاه مورد نظر را تغییر دهید.</cm1>
+                <control>
+                    <state>وضعیت:</state>
+                    <states>
+                        <publish>منتشر شود</publish>
+                        <unpublish>منتشر نشود</unpublish>
+                    </states>
+                </control>
+            </ch-state>
+            <!-- end ch-state op -->
+
+            <!-- show op -->
+            <show>
+                <h1>دیدگاه ثبت شده</h1>
+                <control>
+                    <username>نام و نام خانوادگی:</username>
+                    <time>تاریخ نشر:</time>
+                    <path>مسیر دیدگاه:</path>
+                    <title>عنوان دیدگاه:</title>
+                    <shortcoming>نقاط ضعف:</shortcoming>
+                    <strengths>نقاط قوت:</strengths>
+                    <msg>متن دیدگاه:</msg>
+                </control>
+            </show>
+            <!-- end show op -->
+        </commentscrm>
+
+        <!-- end commentscrm action -->
+    </cm>
+    <!-- END mail Controller -->
+
+</labels>

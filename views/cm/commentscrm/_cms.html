@@ -1,0 +1,160 @@
+<div class="page-title pull-right">
+    <h2 class="pull-right"><span class="fa fa-arrow-circle-o-right"></span> {{labels.h1}}</h2>
+</div>
+
+<div class="col-md-8 pull-right">
+    <div class="panel panel-default">
+        <div class="panel-content">
+            <div class="panel-heading">
+                <div class="panel-title-box pull-right">
+                    <div class="panel-title ">{{labels.control.panel.h1}}</div>
+                </div>
+                <div class="col-md-4 pull-left">
+                    <!--<div class="btn-group pull-left">-->
+                        <!--<a href="#" data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span class="fa fa-filter"></span> <span class="caret"></span></a>-->
+                        <!--<ul class="dropdown-menu" role="menu">-->
+                            <!--<li><a href="#">Action</a></li>-->
+                            <!--<li><a href="#">Another action</a></li>-->
+                            <!--<li><a href="#">Something else here</a></li>-->
+                        <!--</ul>-->
+                    <!--</div>-->
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <table class="table table-bordered table-fix-layout table-hover">
+                    <thead>
+                        <tr>
+                            <th class="text-center col-md-1">{{labels.control.panel.tb.id}}</th>
+                            <th class="text-center col-md-2">{{labels.control.panel.tb.username}}</th>
+                            <th class="text-center col-md-3">{{labels.control.panel.tb.title}}</th>
+                            <th class="text-center col-md-3">{{labels.control.panel.tb.date}}</th>
+                            <th class="text-center col-md-1">{{labels.control.panel.tb.published}}</th>
+                            <th class="text-center col-md-3">{{labels.control.panel.tb.tools}}</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ref-cms">
+                        {% for k,cm in cms.list %}
+                            <tr class="text-center">
+                                <td>{{(k+1) + cms.start}}</td>
+                                <td>
+                                    {% set account = getUserAccountWithAvatar(cm.username) %}
+                                    <img src="{{account.avatar}}" width="20" height="20"> {{account.fname}} {{account.lname}}
+                                </td>
+                                <td>{{cm.title}}</td>
+                                <td>
+                                    {% set time = cm.ts|split(' ') %}
+                                    {% set _date = time[0]|split('-') %}
+                                    {% set y = _date[2] %}
+                                    {% set m = _date[1] %}
+                                    {% set d = _date[0] %}
+
+                                    {{ changeDate(y ~ '/' ~ m ~ '/' ~ d) }} - {{time[1]}}
+                                </td>
+                                <td>
+                                    {% if cm.publish == '1' %}
+                                        <label class="label label-success"><span class="fa fa-check"></span> </label>
+                                    {% else %}
+                                        {% if cm.publish == '0' %}
+                                            <label class="label label-danger"><span class="fa fa-times"></span> </label>
+                                        {% else %}
+                                            <label class="label label-info"><span class="fa fa-eye-slash"></span> </label>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="javascript:deleteCM('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.delete}}" ><span class="fa fa-times"></span> </a>
+                                    {% if cm.path.pId %}
+                                        {% set href = '/refproduct/' ~ cm.path.pId %}
+                                    {% else %}
+                                        {% if cm.path.pCode %}
+                                            {% set href = '/products/' ~ cm.path.storeID ~ '/' ~ cm.path.pCode %}
+                                        {% else %}
+                                            {% set href = '/stores/' ~ cm.path.storeID %}
+                                        {% endif %}
+                                    {% endif %}
+                                    <a href="{{href}}" title="{{labels.control.go}}" target="_blank"><span class="fa fa-angle-double-left"></span> </a>
+                                    <a href="javascript:changeState('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.changeState}}"><span class="fa fa-refresh"></span> </a>
+                                    <a href="javascript:showComment('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.show}}"><span class="fa fa-eye"></span> </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="panel-footer">
+                <div class="col-md-8 pull-left padding-0">
+                    <div id="pagination" class="pull-left"></div>
+                </div>
+                <div class="col-md-4 pull-right padding-0">
+                    <label class="label-control col-md-6 pull-right">{{labels.control.per}}</label>
+                    <div class="col-md-6 pull-right">
+                        <input type="text" id="per" value="{{cms.per}}" class="form-control text-center" onkeypress="isNumber(event);" onchange="refComs();" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="start" value="{{cms.start}}">
+<input type="hidden" id="count" value="{{cms.count}}">
+
+<script>
+    $(document).ready(function () {
+
+        //Create pagination
+        crPagination();
+
+    })
+
+    function deleteCM(id, server){
+//        var server = $(this).attr('cm-server');
+//        var id = $(this).attr('cm-id');
+
+        var title = '{{labels.messages.confirm.delete_comment.title}}';
+        var msg = '{{labels.messages.confirm.delete_comment.msg}}';
+        messageBox(MB_WARNING_YES_NO, title, msg, {yes: '{{labels.buttons.yes}}', no: '{{labels.buttons.no}}'}, function (e) {
+            if(e){
+                post('/comment/cm/commentscrm', {op:'rm', id: id, server: server}, function (data) {
+                    if( data == '' ) {
+                        notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                        refComs();
+                    }else
+                        notyAlert(data, 'error');
+                })
+            }
+        })
+    }
+
+    function crPagination(){
+        var start = Number($('#start').val());
+        var per = Number($('#per').val());
+        var count = Number($('#count').val());
+
+        createPaging(count, per, start, 4, 'pagination', {per: per, startID: 'start'}, function () {
+            refComs();
+        })
+    }
+
+    //refresh comments
+    function refComs(){
+        var start = Number($('#start').val());
+        var per = Number($('#per').val());
+        post('/comment/cm/commentscrm/', {op:'ref-cms', start: start, per: per}, function (data) {
+            writeInDiv('ref-cms', data);
+            crPagination();
+        })
+    }
+
+    //Change state comment
+    function changeState(id, server){
+        createModal('/comment/cm/commentscrm', {op:'ch-state', id: id, server: server}, 'ch-state-form', true, true);
+    }
+
+    //show comment
+    function showComment(id, server){
+        createModal('/comment/cm/commentscrm', {op:'show', id: id, server: server}, 'show-form', true, true);
+    }
+</script>

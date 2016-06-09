@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu>
+    <crm mode="post">
+        <comment title="reviews" class="fa fa-comments" isModule="1" mName="comment" id="43">
+            <items mode="post" link="/comment/cm/groupcrm" title="bonus points" class="fa fa-tasks" isModule="1" mName="comment" id="44"/>
+            <cms mode="post" link="/comment/cm/commentscrm" title="reviews" class="fa fa-comments" isModule="1" mName="comment" id="45"/>
+        </comment>
+    </crm>
+
+    <!-- This menu show in profile module -->
+    <profile mode="post">
+    </profile>
+
+</menu>

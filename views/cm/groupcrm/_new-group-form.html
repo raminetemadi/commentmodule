@@ -1,0 +1,113 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal"><span class="fa fa-times"></span> </button>
+            <h4 class="modal-title">{{labels.h1}}</h4>
+        </div>
+
+        <form class="form-horizontal" id="n-g-f">
+            <div class="modal-body">
+                <!-- type -->
+                <div class="form-group">
+                    <label class="col-md-3 pull-right" for="type">{{labels.control.type}}</label>
+                    <div class="col-md-9 pull-right">
+                        <select class="form-control" id="type" name="type" onchange="getTypeList()">
+                            <option value="100">{{labels.control.types.store}}</option>
+                            <option value="101">{{labels.control.types.product}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- name -->
+                <div class="form-group">
+                    <label class="col-md-3 pull-right" for="name">{{labels.control.name}}</label>
+                    <div class="col-md-9 pull-right">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="{{labels.control.pl.name}}"
+                                onkeypress="enLetters(event)" maxlength="10">
+                    </div>
+                </div>
+
+                <!-- description -->
+                <div class="form-group">
+                    <label class="col-md-3 pull-right" for="des">{{labels.control.des}}</label>
+                    <div class="col-md-9 pull-right">
+                        <input type="text" class="form-control" id="des" name="des" placeholder="{{labels.control.pl.des}}" required>
+                    </div>
+                </div>
+
+                <!-- assigned name -->
+                <div class="form-group">
+                    <label class="col-md-3 pull-right" for="assigned">{{labels.control.assigned}}</label>
+                    <div class="col-md-9 pull-right">
+                        <select class="form-control" id="assigned" name="assigned_name"></select>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer text-left">
+                <div class="btn-group pull-left">
+                    <button class="btn btn-danger" type="button" id="close-f" data-dismiss="modal"><span class="fa fa-times"></span> {{labels.buttons.cancel }}</button>
+                    <button class="btn btn-primary" type="submit"><span class="fa fa-check"></span> {{labels.buttons.submit }}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#type').selectpicker();
+        $('#assigned').selectpicker();
+
+        getTypeList();
+
+        $('#n-g-f').submit(function (e) {
+            e.preventDefault();
+            var elements = $(this).serialize();
+
+            post('/comment/cm/groupcrm/n-g', {el: elements}, function (data) {
+                if( data == '' ){
+                    notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                    $('#close-f').click();
+                    refreshGroups();
+                }else{
+                    notyAlert(data, 'error')
+                }
+            })
+        });
+    });
+
+    function getTypeList(){
+        var type = $('#type').val();
+        post('/comment/cm/groupcrm/g-list', {type: type}, function (data) {
+            if( typeof data[0].part != 'undefined' ){//this is store
+                $('#assigned').html('');
+                for(var i=0; i<=data.length-1; i++){
+                    var title = data[i]['@attributes'].title,
+                            name = data[i]['@attributes'].name;
+
+                    var op = document.createElement('option');
+                    $(op).val(name);
+                    $(op).html(title);
+
+                    $(op).appendTo('#assigned');
+                }
+                $('#assigned').selectpicker('refresh');
+            }else if( typeof data[0].item != 'undefined' ){
+                $('#assigned').html('');
+                for(var i=0; i<=data.length-1; i++){
+                    var title = data[i]['@attributes'].description,
+                            name = data[i]['@attributes'].name;
+
+                    var op = document.createElement('option');
+                    $(op).val(name);
+                    $(op).html(title);
+
+                    $(op).appendTo('#assigned');
+                }
+                $('#assigned').selectpicker('refresh');
+            }
+        }, 'json')
+    }
+</script>

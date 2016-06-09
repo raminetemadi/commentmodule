@@ -1,0 +1,57 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal"><span class="fa fa-times"></span> </button>
+            <h4 class="modal-title">{{labels.h1}}</h4>
+        </div>
+
+        <div class="modal-body form-horizontal">
+            <div class="form-group">
+                <div class="col-md-12">{{labels.cm1}}</div>
+            </div>
+            <div class="form-group">
+                <label class="label-control col-md-3 pull-right">{{labels.control.state}}</label>
+                <div class="col-md-9 pull-right">
+                    <select class="form-control" id="state">
+                        <option value="0" {% if publish == '0' %} selected {% endif %}>{{labels.control.states.unpublish}}</option>
+                        <option value="1" {% if publish == '1' %} selected {% endif %}>{{labels.control.states.publish}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <div class="btn-group text-left pull-left">
+                <button class="btn btn-danger" data-dismiss="modal" id="close"><span class="fa fa-times"></span> {{labels.buttons.cancel}}</button>
+                <button class="btn btn-primary" id="ok"><span class="fa fa-check"></span> {{labels.buttons.submit}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="server" value="{{server}}">
+<script>
+    $(document).ready(function () {
+        $('#state').selectpicker();
+
+        $('#ok').click(function () {
+            var server = $('#server').val();
+
+            post('/comment/cm/commentscrm/', {
+                op: 'up-state',
+                id: '{{id}}',
+                server: server,
+                publish: $('#state').val()
+            }, function (data) {
+                if (data == '') {
+                    notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                    $('#close').click();
+                    refComs();
+                } else {
+                    notyAlert(data, 'error');
+                }
+            })
+        });
+
+    })
+</script>

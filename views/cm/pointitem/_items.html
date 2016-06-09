@@ -1,0 +1,86 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal"><span class="fa fa-times"></span> </button>
+            <h4 class="modal-title">{{labels.h1|replace({'%s%': gTitle})}}</h4>
+        </div>
+
+        <div class="modal-body form-horizontal" id="item-div">
+            {% if items %}
+                <table class="table table-bordered table-hover table-fix-layout">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1 text-center">{{labels.table.id}}</th>
+                            <th class="col-md-5 text-center">{{labels.table.title}}</th>
+                            <th class="col-md-2 text-center">{{labels.table.default}}</th>
+                            <th class="col-md-1 text-center">{{labels.table.id}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for k,item in items %}
+                            {% set item = item['@attributes'] %}
+                            <tr class="text-center">
+                                <td>{{k+1}}</td>
+                                <td>{{item.title}}</td>
+                                <td>{{item.default}}</td>
+                                <td>
+                                    <a href="javascript:rmPointItem('{{item.name}}')">
+                                        <span class="fa fa-times"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="form-group text-center">
+                    <span class="help-block">{{labels.gbasic.notification.alert.notfound}}</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="modal-footer">
+            <div class="btn-group pull-left">
+                <button class="btn btn-danger" data-dismiss="modal"><span class="fa fa-times"></span> {{labels.buttons.cancel}}</button>
+                <button class="btn btn-primary" onclick="createModal('/comment/cm/pointitem/cr-f', {}, 'point-item-form', true);">
+                    <span class="fa fa-plus"></span> {{labels.buttons.new }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="gName" value="{{gName}}">
+<script>
+    $(document).ready(function () {
+
+    })
+
+    function refreshList(){
+        post('/comment/cm/pointitem/ref-g', {gName: $('#gName').val()}, function (data) {
+            $('#item-div').html(data);
+        })
+    }
+
+    function rmPointItem(pName){
+        var gName = $('#gName').val();
+
+        messageBox(MB_WARNING_YES_NO, '{{labels.messages.confirm.delete.title}}', '{{labels.messages.confirm.delete.msg}}',
+                {
+                    yes: '{{labels.buttons.yes}}',
+                    no: '{{labels.buttons.no}}'
+                }, function (e) {
+                    if( e ){
+                        post('/comment/cm/pointitem/rm', {gName: gName, pName: pName}, function (data) {
+                            if( data == '' ){
+                                notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                                refreshList();
+                            }else{
+                                notyAlert(data, 'error');
+                            }
+                        });
+                    }
+                });
+
+    }
+</script>

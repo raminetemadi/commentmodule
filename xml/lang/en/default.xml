@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<labels dir="rtl" align="right" lang="fa">
+    <!-- All labels in mail Controller -->
+    <cm>
+
+        <!-- START Basic Items -->
+        <basic>
+            <!-- MainMenu Title -->
+            <mainmenutitle>منوی اصلی</mainmenutitle>
+
+            <!-- START BUTTONS -->
+            <buttons>
+                <login>login</login>
+                <submit>submit</submit>
+                <register>register</register>
+                <reset>reset</reset>
+                <back>back</back>
+                <apply>apply</apply>
+                <send>send</send>
+                <img>image...</img>
+                <cancel>cancel</cancel>
+                <new>new</new>
+                <delete>delete</delete>
+                <edit>edit</edit>
+                <yes>yes</yes>
+                <no>no</no>
+                <change>save change</change>
+                <ok>accept</ok>
+                <active>activate</active>
+                <deactivate>deactivate</deactivate>
+                <leave>leave page</leave>
+                <stay>stay on page</stay>
+                <close>close</close>
+            </buttons>
+            <!-- END BUTTONS -->
+
+            <!-- START GROUPS ITEMS -->
+            <groups>
+                <gender>
+                    <female>female</female>
+                    <male>male</male>
+                    <!--<unknown>دیگر</unknown>-->
+                </gender>
+                <month>
+                    <shamsi>
+                        <m1>january</m1>
+                        <m2>februray</m2>
+                        <m3>march</m3>
+                        <m4>april</m4>
+                        <m5>may</m5>
+                        <m6>june</m6>
+                        <m7>july</m7>
+                        <m8>august</m8>
+                        <m9>september</m9>
+                        <m10>october</m10>
+                        <m11>november</m11>
+                        <m12>december</m12>
+                    </shamsi>
+                </month>
+                <date>
+                    <d>day</d>
+                    <m>month</m>
+                    <y>year</y>
+                </date>
+            </groups>
+            <!-- END GROUPS ITEMS -->
+
+            <!-- START Messages -->
+            <messages>
+                <!-- START VALIDATE -->
+                <validate>
+                    <username>you entered forbidden text for username.[br]please enter characters and _</username>
+                    <password>password should have at least 5 chaeacters</password>
+                    <confirm>passwords are not same</confirm>
+                    <fname>name is mandatory</fname>
+                    <lname>surname is mandatory</lname>
+                    <email>incorrect email</email>
+                    <terms_of_service>please accept our policies</terms_of_service>
+                    <incorrectnumber>please enter correct number</incorrectnumber>
+                    <name>you entered incorrect name[br]please enter characters and _</name>
+                    <store>store name is incorrect[br]please enter characters and _</store>
+                    <notEmpty>please fill empty fields</notEmpty>
+                </validate>
+                <!-- END VALIDATE -->
+
+                <!-- START ALERT -->
+                <alert>
+                    <success>function done successfully</success>
+                    <success_confirm>your information has been saved correctly, it will show after admin confirmation</success_confirm>
+                    <notfound>no item found</notfound>
+                    <expire_store>alert! your store has been suspended due on payment. please pay your invoice to activate store</expire_store>
+                    <expire_store_info>your store renew date is %s please renew it before expiration date</expire_store_info>
+                    <expire_store_by_crm>your expiration date has increased for %day day your new expiration date is  %date </expire_store_by_crm>
+                    <expire_store_by_pkLimited>your purchased package is limited to add more store, please upgrade it to adding more store</expire_store_by_pkLimited>
+                    <limited_price>your package is limited to change product's price, to edit product's price please upgrade your package</limited_price>
+                    <allow_logo>your package is limited to add logo, to add or edit logo please upgrade your package</allow_logo>
+                    <allow_cover>your package is limited to add banner, to add or edit logo please upgrade your package</allow_cover>
+                    <leave_page_store>
+                        <title>alert!</title>
+                        <msg>you are creating new store, if you leave this page all of entered data will lost. do you really leave this page?</msg>
+                    </leave_page_store>
+                    <geo_not_selected>geo address not selected</geo_not_selected>
+                </alert>
+                <!-- END ALERT -->
+
+                <!-- Confirm -->
+                <confirm>
+                    <delete>
+                        <title>alert!</title>
+                        <msg>are your sure to delete this information?</msg>
+                    </delete>
+
+                    <gdelete>
+                        <title>alert!</title>
+                        <msg>are you sure to remove category "%s" [br]after removing this category, all of stores under this category will affect</msg>
+                    </gdelete>
+
+                    <store_delete>
+                        <title>important alert!</title>
+                        <msg>your are deleting store "%s" [br]after clicking on yes all of store's information will delete.[br]are you sure?</msg>
+                    </store_delete>
+
+                    <store_delete_error>
+                        <title>alert!</title>
+                        <msg>an error occurred for this store.[br]please refresh this page.[br]are you sure to delete this store?</msg>
+                    </store_delete_error>
+
+                    <empty_parts>
+                        <title>alert!</title>
+                        <msg>you didn't select a part for this store</msg>
+                    </empty_parts>
+
+                    <username_error>
+                        <title>alert!</title>
+                        <msg>selected user is not exist or deleted</msg>
+                    </username_error>
+
+                    <store_error>
+                        <title>alert!</title>
+                        <msg>this store name has taken, please select another name</msg>
+                    </store_error>
+
+                    <rollback_expire>
+                        <title>alert!</title>
+                        <msg>do you want to change store credit from package management?</msg>
+                    </rollback_expire>
+
+                    <delete_comment>
+                        <title>alert!</title>
+                        <msg>after removing this review, all of data will remove.do you want to proceed?</msg>
+                    </delete_comment>
+                </confirm>
+                <!-- END Confirm -->
+            </messages>
+            <!-- END Messages -->
+
+        </basic>
+        <!-- END Basic Items -->
+
+        <!-- START MainMenu Labels-->
+        <menu>
+        </menu>
+        <!-- END MainMenu Labels -->
+
+        <index></index>
+
+        <!-- groupcrm action -->
+        <groupcrm>
+            <h1>review froups, manage bonus</h1>
+
+            <!-- gall op -->
+            <gall>
+                <h1>groups</h1>
+                <new_btn>new group</new_btn>
+                <table>
+                    <id>#</id>
+                    <des>title</des>
+                    <assigned>assigned to</assigned>
+                    <type>category type</type>
+                    <tools>#</tools>
+                </table>
+                <types>
+                    <t100>as store</t100>
+                    <t101>as product</t101>
+                </types>
+            </gall>
+            <!-- end gall op -->
+
+            <!-- cr-g-f op -->
+            <cr-g-f>
+                <h1>new group</h1>
+                <control>
+                    <type>group type</type>
+                    <name>name</name>
+                    <des>description</des>
+                    <assigned>assigned to</assigned>
+                    <types>
+                        <store>as store</store>
+                        <product>as product</product>
+                    </types>
+
+                    <pl>
+                        <name>you can leave it blank</name>
+                        <des>select group name</des>
+                    </pl>
+                </control>
+            </cr-g-f>
+            <!-- end cr-g-f op -->
+        </groupcrm>
+        <!-- end groupcrm action -->
+
+        <!-- pointitem action -->
+        <pointitem>
+
+            <!-- g op -->
+            <g>
+                <h1>bonus point for group %s%</h1>
+                <table>
+                    <id>#</id>
+                    <title>title</title>
+                    <default>default item</default>
+                </table>
+            </g>
+            <!-- end g op -->
+
+            <!-- ref-g -->
+            <ref-g>
+                <table>
+                    <id>#</id>
+                    <title>title</title>
+                    <default>default value</default>
+                </table>
+            </ref-g>
+            <!-- end ref-g op -->
+
+            <!-- cr-f op -->
+            <cr-f>
+                <h1>new bonus point</h1>
+                <control>
+                    <title>title</title>
+                    <name>name</name>
+                    <default>default</default>
+                    <pl>
+                        <title>please select a title</title>
+                        <name>you can leave it blank</name>
+                    </pl>
+                    <hlp>
+                        <default>please enter default value</default>
+                    </hlp>
+                </control>
+            </cr-f>
+            <!-- end cr-f op -->
+        </pointitem>
+        <!-- end pointitem action -->
+
+        <!-- commentscrm action -->
+        <commentscrm>
+            <h1>submitted review</h1>
+            <control>
+                <delete>remove this review</delete>
+                <per>visits</per>
+                <go>goto review page</go>
+                <changeState>change review status</changeState>
+                <show>show review</show>
+                <panel>
+                    <h1>reviews</h1>
+                    <tb>
+                        <id>#</id>
+                        <username>username</username>
+                        <title>title</title>
+                        <date>publish date</date>
+                        <published>status</published>
+                        <tools>#</tools>
+                    </tb>
+                </panel>
+            </control>
+
+            <!-- ch-state op -->
+            <ch-state>
+                <h1>review status change</h1>
+                <cm1>you can change review status</cm1>
+                <control>
+                    <state>status</state>
+                    <states>
+                        <publish>publish</publish>
+                        <unpublish>don't publish</unpublish>
+                    </states>
+                </control>
+            </ch-state>
+            <!-- end ch-state op -->
+
+            <!-- show op -->
+            <show>
+                <h1>published review</h1>
+                <control>
+                    <username>full name</username>
+                    <time>publsh</time>
+                    <path>path</path>
+                    <title>title</title>
+                    <shortcoming>disadvantage</shortcoming>
+                    <strengths>advantages</strengths>
+                    <msg>message</msg>
+                </control>
+            </show>
+            <!-- end show op -->
+        </commentscrm>
+
+        <!-- end commentscrm action -->
+    </cm>
+    <!-- END mail Controller -->
+
+</labels>

@@ -1,0 +1,73 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="close" data-dismiss="modal"><span class="fa fa-times"></span> </button>
+            <h4 class="modal-title">{{labels.h1}}</h4>
+        </div>
+
+        <form class="form-horizontal" id="new-item-f">
+            <div class="modal-body">
+                <!-- title -->
+                <div class="form-group">
+                    <label class="label-control col-md-3 pull-right" for="title">{{labels.control.title}}</label>
+                    <div class="col-md-9 pull-right">
+                        <input type="text" class="form-control" id="title" name="pTitle" placeholder="{{labels.control.pl.title}}" required>
+                    </div>
+                </div>
+
+                <!-- name -->
+                <div class="form-group">
+                    <label class="label-control col-md-3 pull-right" for="name">{{labels.control.name}}</label>
+                    <div class="col-md-9 pull-right">
+                        <input type="text" class="form-control" id="name" name="pName" placeholder="{{labels.control.pl.name}}"
+                               onkeypress="enLetters(event)" maxlength="10">
+                    </div>
+                </div>
+
+                <!-- default -->
+                <div class="form-group">
+                    <label class="label-control col-md-3 pull-right" for="default">{{labels.control.default}}</label>
+                    <div class="col-md-9 pull-right">
+                        <select class="form-control" id="default" name="defaultPoint">
+                            <option value="1" selected>1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <div class="btn-group pull-left">
+                    <button class="btn btn-danger" data-dismiss="modal" type="button" id="new-item-close-btn"><span class="fa fa-times"></span> {{labels.buttons.cancel}}</button>
+                    <button class="btn btn-primary" type="submit">
+                        <span class="fa fa-check"></span> {{labels.buttons.submit}}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#default').selectpicker();
+
+        $('#new-item-f').submit(function (e) {
+            e.preventDefault();
+
+            var elements = $(this).serialize();
+            post('/comment/cm/pointitem/n', {el:elements, gName: $('#gName').val()}, function (data) {
+                if( data == '' ){
+                    notyAlert('{{labels.gbasic.notification.alert.success}}', 'success');
+                    refreshList();
+                    $('#new-item-close-btn').click();
+                }else{
+                    notyAlert(data, 'error');
+                }
+            });
+        });
+    })
+</script>

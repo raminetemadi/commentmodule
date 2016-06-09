@@ -1,0 +1,53 @@
+<div class="col-md-9 pull-right">
+    <div class="panel panel-default">
+        <div class="panel-content">
+            <div class="panel-heading">
+                <div class="panel-title-box pull-right">
+                    <h3 class="panel-title">{{labels.h1}}</h3>
+                </div>
+                <div class="col-md-3 pull-left text-left">
+                    <button class="btn btn-default" onclick="createModal('/comment/cm/groupcrm/cr-g-f', {}, 'g-form', true);">
+                        <span class="fa fa-plus"></span> {{labels.new_btn}}
+                    </button>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                {% if gs %}
+                    <table class="table table-bordered table-hover table-fix-layout">
+                        <thead>
+                            <tr>
+                                <th class="text-center col-md-1">{{labels.table.id}}</th>
+                                <th class="text-center col-md-4">{{labels.table.des}}</th>
+                                <th class="text-center col-md-3">{{labels.table.assigned}}</th>
+                                <th class="text-center col-md-3">{{labels.table.type}}</th>
+                                <th class="text-center col-md-1">{{labels.table.tools}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for k,g in gs %}
+                                {% set g = g['@attributes'] %}
+                                <tr class="text-center">
+                                    <td>{{k+1}}</td>
+                                    <td>{{g.des}}</td>
+                                    <td>{{g.assigned_title}}</td>
+                                    <td>{{labels.types['t'~g.type]}}</td>
+                                    <td>
+                                        <a href="javascript:rmGroup('{{g.name}}')"><span class="fa fa-times"></span> </a>
+                                        <a href="javascript:groupItem('{{g.name}}')"><span class="fa fa-sitemap"></span> </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% else %}
+                <div class="center-block text-center">
+                    <span class="help-block ">
+                        {{labels.gbasic.notification.alert.notfound}}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

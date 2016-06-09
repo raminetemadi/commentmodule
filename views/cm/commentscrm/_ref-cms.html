@@ -1,0 +1,45 @@
+{% for k,cm in cms.list %}
+    <tr class="text-center">
+        <td>{{(k+1) + cms.start}}</td>
+        <td>
+            {% set account = getUserAccountWithAvatar(cm.username) %}
+            <img src="{{account.avatar}}" width="20" height="20"> {{account.fname}} {{account.lname}}
+        </td>
+        <td>{{cm.title}}</td>
+        <td>
+            {% set time = cm.ts|split(' ') %}
+            {% set _date = time[0]|split('-') %}
+            {% set y = _date[2] %}
+            {% set m = _date[1] %}
+            {% set d = _date[0] %}
+
+            {{ changeDate(y ~ '/' ~ m ~ '/' ~ d) }} - {{time[1]}}
+        </td>
+        <td>
+            {% if cm.publish == '1' %}
+            <label class="label label-success"><span class="fa fa-check"></span> </label>
+            {% else %}
+            {% if cm.publish == '0' %}
+            <label class="label label-danger"><span class="fa fa-times"></span> </label>
+            {% else %}
+            <label class="label label-info"><span class="fa fa-eye-slash"></span> </label>
+            {% endif %}
+            {% endif %}
+        </td>
+        <td>
+            <a href="javascript:deleteCM('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.delete}}" ><span class="fa fa-times"></span> </a>
+            {% if cm.path.pId %}
+            {% set href = '/refproduct/' ~ cm.path.pId %}
+            {% else %}
+            {% if cm.path.pCode %}
+            {% set href = '/products/' ~ cm.path.storeID ~ '/' ~ cm.path.pCode %}
+            {% else %}
+            {% set href = '/stores/' ~ cm.path.storeID %}
+            {% endif %}
+            {% endif %}
+            <a href="{{href}}" title="{{labels.control.go}}" target="_blank"><span class="fa fa-angle-double-left"></span> </a>
+            <a href="javascript:changeState('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.changeState}}"><span class="fa fa-refresh"></span> </a>
+            <a href="javascript:showComment('{{cm.id}}', '{{cm.server|json_encode}}')" title="{{labels.control.show}}"><span class="fa fa-eye"></span> </a>
+        </td>
+    </tr>
+{% endfor %}
